@@ -24,7 +24,7 @@ def simple_rag(api_key:str, question: str) -> str:
 
     return qa.invoke({"query":question})["result"]
 
-st.header("❓ 철수에 대해 무엇이든 물어보세요")
+st.header("	📖 철수 일기 내용 물어보기")
 api_key = st.text_input("🔑 OPENAI API KEY를 입력하세요.", type="password")
 question = st.text_input("💬 질문을 입력하세요.")
 
@@ -34,6 +34,6 @@ if st.button("✅ 답변 확인"):
         st.warning("API 키와 질문을 모두 입력해주세요.")
         
     else:
-        with st.spinner("답변을 생성 중입니다..."):
+        with st.spinner("일기 내용을 검토해 답변을 생성 중입니다..."):
             answer = simple_rag(api_key=api_key, question=question)
             st.markdown(answer)
